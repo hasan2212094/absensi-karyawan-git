@@ -3,15 +3,15 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card border border-success">
-                <div class="card-header bg-success p-2 text-white bg-opacity-75 text-center">{{ __('Absen pulang') }}</div>
+                <div class="card-header bg-success p-2 text-white bg-opacity-75 text-center">{{ __('Absen lembur') }}</div>
 
                 <div class="card-body">
     <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>QR Scan Pulang</title>
+    <title>QR Scan lembur</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   </head>
   <body>
@@ -35,26 +35,30 @@
 
         <video id="preview"></video>
             <!-- from -->
-            <form action="{{route('scan.store.pulang')}}" method="post" id="form">
+            <form action="{{route('scan.store.lembur')}}" method="post" id="form">
                 @csrf
                 <input type="hidden" name="id_karyawan" id="id_karyawan">
             </form>
         </div>
 
     <!-- scanner -->
-        <div class="table-responsive mt-5">
-            <table class="table table-bordered table-hover">
+        <div class="table-responsive mt-30">
+            <table class="table table-bordered table-hover " >
                 <tr>
                     <th>nama</th>
                     <th>tanggal</th>
-                    <th>jam masuk</th>
-                    <th>jam pulang</th>
+                    <th> masuk</th>
+                    <th> pulang</th>
+                    <th> lembur</th>
+                    <th>total lembur</th>
                     @foreach ( $presensis as $presensi)
                     <tr>
                       <td>{{ $presensi->name->name}}</td>
                       <td>{{ $presensi->tanggal}}</td>
                       <td>{{ $presensi->jammasuk }}</td>
                       <td>{{ $presensi->jamkeluar }}</td>
+                      <td>{{ $presensi->jamlembur }}</td>
+                      <td>{{ $presensi->jamkerja}}</td>
                     </tr>
                     @endforeach
                 </tr>

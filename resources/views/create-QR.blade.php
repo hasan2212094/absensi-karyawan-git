@@ -1,13 +1,20 @@
-<!doctype html>
-<html lang="en">
-  <head>
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card border border-success">
+                <div class="card-header bg-success p-2 text-white bg-opacity-75 text-center">{{ __('Absen masuk') }}</div>
+
+                <div class="card-body">
+                <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>QR Scan Masuk</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   </head>
-  <body>
-     <div class="container col-lg-4 py-5">
+     <div class="container col-lg-7 py-5">
        <!-- scanner -->
         <div class="card bg-white shadow rounded-3 p p-3 border-0">
         <!-- pesan -->
@@ -51,7 +58,7 @@
             </table>
             <br>
             <a href="{{url('/')}}">
-        <button type="submit">kembali</button>
+        <button type="submit"  class="btn btn-outline-success" >kembali</button>
     </a>
         </div>
      </div>
@@ -83,5 +90,9 @@
     
     <script type="text/javascript" src="instascan.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-  </body>
-</html>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

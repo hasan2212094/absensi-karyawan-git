@@ -17,6 +17,7 @@ class Karyawan extends Model
         'id',
         'nik',
         'name',
+        'image'
     ];
 
     public function presensi()

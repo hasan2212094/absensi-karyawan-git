@@ -29,12 +29,20 @@ Route::get('/scan/create/pulang',[PresensiController::class,'create_pulang'])->n
 Route::get('/scan/create/pulang',[PresensiController::class,'index_pulang'])->name('scan.index.pulang');
 Route::post('/scan/store/pulang', [PresensiController::class, 'store_pulang'])->name('scan.store.pulang');
 
+Route::get('/scan/create/lembur',[PresensiController::class,'create_lembur'])->name('scan.create.lembur');
+Route::get('/scan/create/lembur',[PresensiController::class,'index_lembur'])->name('scan.index.lembur');
+Route::post('/scan/store/lembur', [PresensiController::class, 'store_lembur'])->name('scan.store.lembur');
+
 Route::get('/',[KaryawanController::class,'index'])->name('index');
 Route::get('/show/{id}', [KaryawanController::class,'show'])->name('show');
 Route::get('/create ' , [KaryawanController::class,'create'])->name('create');
 Route::post('/create',[KaryawanController::class,'store'])->name('store');
+Route::get('/edit/{karyawan}', [KaryawanController::class,'edit_karyawan'])->name('edit_karyawan');
+Route::patch('/update/{karyawan}', [KaryawanController::class,'update_karyawan'])->name('update_karyawan');
+Route::delete('/delete/{karyawan}', [KaryawanController::class,'delete_karyawan'])->name('delete_karyawan');
+Route::get('/profile/{karyawan}',[KaryawanController::class, 'profile_karyawan'])->name('profile_karyawan');
 
+Route::get('/index/detail',[PresensiController::class,'index_detail'])->name('index_detail');
 
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
