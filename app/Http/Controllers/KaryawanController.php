@@ -52,10 +52,12 @@ class KaryawanController extends Controller
 
         }
 
+
     public function edit_karyawan(Karyawan $karyawan)
     {
         return view('edit_karyawan', compact('karyawan'));
     }
+
 
      public function update_karyawan(Karyawan $karyawan, Request $request)
 
@@ -79,11 +81,14 @@ class KaryawanController extends Controller
          ]);
           return Redirect::route('index');
     }
+
+    
     public function delete_karyawan(Karyawan $karyawan)
     {
         $karyawan->delete();
         return Redirect::route('index');
     }
+
 
     public function Profile_karyawan()
     {

@@ -33,6 +33,8 @@ Route::get('/scan/create/lembur',[PresensiController::class,'create_lembur'])->n
 Route::get('/scan/create/lembur',[PresensiController::class,'index_lembur'])->name('scan.index.lembur');
 Route::post('/scan/store/lembur', [PresensiController::class, 'store_lembur'])->name('scan.store.lembur');
 
+Route::get('/index/detail',[PresensiController::class,'index_detail'])->name('index_detail');
+
 Route::get('/',[KaryawanController::class,'index'])->name('index');
 Route::get('/show/{id}', [KaryawanController::class,'show'])->name('show');
 Route::get('/create ' , [KaryawanController::class,'create'])->name('create');
@@ -42,7 +44,7 @@ Route::patch('/update/{karyawan}', [KaryawanController::class,'update_karyawan']
 Route::delete('/delete/{karyawan}', [KaryawanController::class,'delete_karyawan'])->name('delete_karyawan');
 Route::get('/profile/{karyawan}',[KaryawanController::class, 'profile_karyawan'])->name('profile_karyawan');
 
-Route::get('/index/detail',[PresensiController::class,'index_detail'])->name('index_detail');
+
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -23,18 +23,20 @@ class PresensiController extends Controller
 
         $cek = Presensi::where([
             'id_karyawan' => $request->id_karyawan,
-            'tanggal' => $tanggal,
+            'tanggal' => $tanggal
         ])->first();
-        $dt=[
-            'jammasuk'=>$localtime
-        ];
 
-        if($cek->jammasuk == ""){
-            $cek->update($dt);
-             return redirect('/scan/create')->with('success','silahkan masuk ');
-        }else{
-            return redirect('/scan/create')->with('gagal','sudah absen');
+        if ($cek) {
+            return redirect('/scan/create')->with('gagal', 'Anda sudah absen');
+        } else{
+            Presensi::create([
+                'id_karyawan' => $request->id_karyawan,
+                'tanggal' => $tanggal,
+                'jammasuk'=> $localtime
+            ]);
+            return redirect('/scan/create')->with('success', 'silahkan masuk');
         }
+        
     }
     
     public function index()
@@ -79,6 +81,9 @@ class PresensiController extends Controller
         $presensis = Presensi::all();
         return view('create_QR_pulang', ['presensis' => $presensis]);
     }
+
+
+
     public function create_lembur()
     {
         return view('create_QR_lembur');

@@ -23,6 +23,7 @@ class Presensi extends Model
     {
         return $this->belongsTo(Karyawan::class,'nik');
     }
+    
     public function name()
     {
         return $this->hasOne(Karyawan::class,'nik','id_karyawan');

@@ -8,13 +8,13 @@
                 <div class="card-header">{{ __('Edit karyawan') }}</div>
 
                 <div class="card-body">
-                <form action="{{route('update_karyawan', $karyawan)}}" method="post">
+                <form action="{{route('update_karyawan', $karyawan)}}" method="post" enctype="multipart/form-data">
                     @method('patch')
                     @csrf
 
                     <div class="form-group">
                         <label>NIK</label>
-                        <input type="number" name="nik" placeholder="NIK" class="form-control" 
+                        <input type="text" name="nik" placeholder="NIK" class="form-control" 
                         value="{{ $karyawan->nik}}">
                     </div>
 
@@ -23,7 +23,12 @@
                         <input type="text" name="name" placeholder="Nama" class="form-control" 
                         value="{{ $karyawan->name}}">
                     </div>
-    
+
+                    <div class="form-group">
+                        <label>Foto</label>
+                        <input type="file" name="image" class="form-control">
+                    </div>
+
                     <button type="submit" class="btn btn-primary mt-3">Update data</button>
                 </form>
                 </div>

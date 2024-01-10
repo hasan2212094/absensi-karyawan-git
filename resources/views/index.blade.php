@@ -3,24 +3,24 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-5">
+        <div class="col-md-7">
             <div class="card border border-success ">
                 <div class="card-header bg-success p-2 text-white bg-opacity-75 text-center">{{ __('Karyawan') }}</div>
+                <ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="{{url('/')}}">Active karyawan</a>
+  </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Item karyawan</a>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="{{url('/create')}}">Tambah karyawan baru</a></li>
+      <li><a class="dropdown-item" href="{{url('/index/detail')}}">Detail absensi</a></li>
+      <li><a class="dropdown-item" href="{{url('/profile/{karyawan}')}}">Profile karyawan</a></li>
+    </ul>
 
-                <div class="card-body">
-                  <a href="{{url('/create')}}">
-                     <button type="submit" class="btn btn-outline-success">add new</button>
-                  </a>
-                  <a href="{{url('/index/detail')}}">
-                     <button type="submit" class="btn btn-outline-primary">detail</button>
-                  </a>
-                  <a href="{{url('/profile/{karyawan}')}}">
-                     <button type="submit" class="btn btn-outline-info">profile</button>
-                  </a>
     <br>
     <br>
-    <br>
-    <table class="table table-bordered border-success" style="width: 20rem;">
+    <table class="table table-bordered border-success container d_flex justify-content-center"  style="width: 20rem;">
         <tr>
             <th  class="text-center">NIK</th>
             <th  class="text-center">Nama</th>
@@ -46,9 +46,9 @@
         @endforeach
     </table>
     <br>
-    <div class="btn-group" role="group" aria-label="Basic outlined example">
+    <div class="btn-group container d_flex justify-content-center d-inline-flex gap-1" role="group" aria-label="Basic outlined example">
     <a href="{{url('/scan/create')}}">
-     <button type="button" class="btn btn-outline-primary">Absen Masuk</button>
+     <button type="button" class="btn btn-outline-primary ">Absen Masuk</button>
      </a>
      <a href="{{url('/scan/create/pulang')}}">
       <button type="button" class="btn btn-outline-danger">Absen Pulang</button>

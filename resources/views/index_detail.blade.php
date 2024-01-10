@@ -6,9 +6,19 @@
         <div class="col-md-8">
             <div class="card border border-success">
                 <div class="card-header bg-success p-2 text-white bg-opacity-75 text-center">{{ __('Absen Detail') }}</div>
-
-                <div class="card-body">
-                <div class="table-responsive mt-30">
+                <ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="{{url('/')}}">kembali</a>
+  </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Item karyawan</a>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="{{url('/create')}}">Tambah karyawan baru</a></li>
+      <li><a class="dropdown-item" href="{{url('/index/detail')}}">Detail absensi</a></li>
+      <li><a class="dropdown-item" href="{{url('/profile/{karyawan}')}}">Profile karyawan</a></li>
+    </ul>
+</ul>
+<br><br>
             <table class="table table-bordered table-hover " >
                 <tr>
                     <th>nama</th>
@@ -29,10 +39,6 @@
                     @endforeach
                 </tr>
             </table>
-            <br>
-            <a href="{{url('/')}}">
-        <button type="submit" class="btn btn-outline-success">kembali</button>
-    </a>
         </div>
                 </div>
             </div>
