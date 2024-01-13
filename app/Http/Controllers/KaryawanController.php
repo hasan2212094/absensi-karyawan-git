@@ -96,4 +96,5 @@ class KaryawanController extends Controller
         return view('profile_karyawan', ['karyawan' => $karyawan]);
     }
 
+    
 }

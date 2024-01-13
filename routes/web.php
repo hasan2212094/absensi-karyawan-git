@@ -35,6 +35,7 @@ Route::post('/scan/store/lembur', [PresensiController::class, 'store_lembur'])->
 
 Route::get('/index/detail',[PresensiController::class,'index_detail'])->name('index_detail');
 
+
 Route::get('/',[KaryawanController::class,'index'])->name('index');
 Route::get('/show/{id}', [KaryawanController::class,'show'])->name('show');
 Route::get('/create ' , [KaryawanController::class,'create'])->name('create');

@@ -121,9 +121,15 @@ class PresensiController extends Controller
         return view('create_QR_lembur', ['presensis' => $presensis]);
     }
 
-    public function index_detail()
+    public function index_detail(Request $request )
     {
-        $presensis = Presensi::all();
-        return view('index_detail', ['presensis' => $presensis]);
+        $keyword = $request->keyword;
+
+        $presensis = Presensi::where('id_karyawan','LIKE', '%'.$keyword.'%')
+          ->get();
+        
+        return view('index_detail',['presensis' => $presensis]);
     }
+
+   
 }

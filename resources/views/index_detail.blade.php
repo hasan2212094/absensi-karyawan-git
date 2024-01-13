@@ -19,6 +19,11 @@
     </ul>
 </ul>
 <br><br>
+          <form action="{{route('index_detail')}}" method="get"  class="container px-4">
+                <input name="keyword" type="text"  placeholder="ID"  class="rounded-1 h-25 d-inline-block " style="width: 50px;" >
+               <button type="submit" class="btn btn-primary btn-sm " style="width: 60px;">Search</button>
+          </form>
+          <br><br>
             <table class="table table-bordered table-hover " >
                 <tr>
                     <th>nama</th>
