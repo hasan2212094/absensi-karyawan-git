@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Presensi;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use DateTime;
 use DateTimeZone;
@@ -126,10 +127,27 @@ class PresensiController extends Controller
         $keyword = $request->keyword;
 
         $presensis = Presensi::where('id_karyawan','LIKE', '%'.$keyword.'%')
-          ->get();
-        
-        return view('index_detail',['presensis' => $presensis]);
+          ->paginate(3);
+        //   $presensis->withPath('presensi');
+        //   $presensis->appends($request->all());
+        return view('index_detail',compact('presensis','keyword'));
+    }
+    public function filter_detail(Request $request)
+    {
+        $tanggal_awal = $request->tanggal_awal;
+        $tanggal_akhir = $request->tanggal_akhir;
+
+        $presensis = Presensi::whereDate('tanggal','>=',$tanggal_awal)
+                             ->whereDate('tanggal','<=',$tanggal_akhir)
+                             ->paginate();
+        return view('index_detail',compact('presensis',));
+
     }
 
+    public function delete_presensis(Presensi $presensis)
+    {
+        $presensis->delete();
+        return Redirect::route('index_detail');
+    }
    
 }

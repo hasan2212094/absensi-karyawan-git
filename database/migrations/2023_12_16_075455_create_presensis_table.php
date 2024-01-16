@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('presensis', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_karyawan');
+            $table->integer('id_karyawan')->cascadeOnDelete();
             $table->date('tanggal');
             $table->time('jammasuk')->nullable();
             $table->time('jamkeluar')->nullable();

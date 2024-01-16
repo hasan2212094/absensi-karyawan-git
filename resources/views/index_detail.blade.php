@@ -20,9 +20,31 @@
 </ul>
 <br><br>
           <form action="{{route('index_detail')}}" method="get"  class="container px-4">
-                <input name="keyword" type="text"  placeholder="ID"  class="rounded-1 h-25 d-inline-block " style="width: 50px;" >
+              <div class="row pb-3 container px-4">
+                <div class="col-md-4 ">
+                <input name="keyword" type="text"  placeholder="ID karyawan" class="form_control"  >
+                </div>
+                <div class="col-md-2 ">
                <button type="submit" class="btn btn-primary btn-sm " style="width: 60px;">Search</button>
+                </div>
           </form>
+          <br><br>
+          <form action="{{route('filter_detail')}}" method="get" >
+              <div class="row pb-3">
+                <div class="col-md-3">
+                  <label>tanggal awal</label>
+                  <input type="date" name="tanggal_awal" class="form_control" >
+                </div>
+                <div class="col-md-3">
+                  <label>tanggal akhir</label>
+                  <input type="date" name="tanggal_akhir" class="form_control" >
+                </div>
+                <div class="col-md-1 pt-4">
+               <button type="submit" class="btn btn-primary btn-sm " style="width: 60px;">Search</button>
+                </div>
+             </div>
+          </form>
+
           <br><br>
             <table class="table table-bordered table-hover " >
                 <tr>
@@ -32,6 +54,7 @@
                     <th> pulang</th>
                     <th> lembur</th>
                     <th>total lembur</th>
+                    <th>Action</th>
                     @foreach ( $presensis as $presensi)
                     <tr>
                       <td>{{ $presensi->name->name}}</td>
@@ -40,11 +63,25 @@
                       <td>{{ $presensi->jamkeluar }}</td>
                       <td>{{ $presensi->jamlembur }}</td>
                       <td>{{ $presensi->jamkerja}}</td>
-                    </tr>
+                      <td>
+                      <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                      <form action="{{route('delete_presensis', $presensi)}}" method="post">
+                      @method('delete')
+                      @csrf
+                      <button type="submit" class="btn btn-danger mt-2"> Delete</button>
+                      </form>
+                      </div>
+                      </td>
+                        </tr>
+                   
+
                     @endforeach
                 </tr>
             </table>
-        </div>
+            Total Asbensi karyawan : {{$presensis->total()}}
+              {{$presensis->links('pagination::bootstrap-4')}}
+
+                  </div>
                 </div>
             </div>
         </div>

@@ -32,14 +32,14 @@
                 <td>{{$karya->name}}</td>
                 <td>
                 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                    <form action="{{route('edit_karyawan', $karya)}}" method="get">
+                    <form action="{{route('edit_karyawan', $karya)}}" method="get" class="col-md-6">
                     @csrf
                      <button class="btn btn-primary" type="submit" >Edit</button>
                      </form>
-                     <form action="{{route('delete_karyawan', $karya)}}" method="post">
+                     <form action="{{route('delete_karyawan', $karya)}}" method="post" >
                      @method('delete')
                      @csrf
-                    <button type="submit" class="btn btn-danger mt-2"> Delete</button>
+                    <button type="submit" class="btn btn-danger"> Delete</button>
                      </form>
                 </td>
             </tr>
