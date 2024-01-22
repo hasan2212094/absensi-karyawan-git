@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 use App\Models\Presensi;
+
+use App\Exports\PresensiExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
+
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use DateTime;
@@ -35,7 +40,7 @@ class PresensiController extends Controller
                 'tanggal' => $tanggal,
                 'jammasuk'=> $localtime
             ]);
-            return redirect('/scan/create')->with('success', 'silahkan masuk');
+            return redirect('/scan/create')->with('success', 'silahkan masuk, bila lembur absen pulang jam 06:30');
         }
         
     }
@@ -127,7 +132,7 @@ class PresensiController extends Controller
         $keyword = $request->keyword;
 
         $presensis = Presensi::where('id_karyawan','LIKE', '%'.$keyword.'%')
-          ->paginate(3);
+          ->paginate(30);
         //   $presensis->withPath('presensi');
         //   $presensis->appends($request->all());
         return view('index_detail',compact('presensis','keyword'));
@@ -148,6 +153,11 @@ class PresensiController extends Controller
     {
         $presensis->delete();
         return Redirect::route('index_detail');
+    }
+
+    public function presensis_exports()
+    {
+        return Excel::download(new PresensiExport,'persensis.xlsx');
     }
    
 }

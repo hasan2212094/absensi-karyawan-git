@@ -36,8 +36,7 @@ Route::post('/scan/store/lembur', [PresensiController::class, 'store_lembur'])->
 Route::get('/index/detail',[PresensiController::class,'index_detail'])->name('index_detail');
 Route::get('/filter/detail',[PresensiController::class,'filter_detail'])->name('filter_detail');
 Route::delete('/delete/{presensis}', [PresensiController::class,'delete_presensis'])->name('delete_presensis');
-
-
+Route::get('/exportpresensis', [PresensiController::class,'presensis_exports'])->name('presensis_exports');
 
 Route::get('/',[KaryawanController::class,'index'])->name('index');
 Route::get('/show/{id}', [KaryawanController::class,'show'])->name('show');

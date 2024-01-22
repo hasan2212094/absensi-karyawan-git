@@ -44,7 +44,7 @@
                 </div>
              </div>
           </form>
-
+          <div class="card_header"><a href="{{ route('presensis_exports')}}"class="btn btn-success">Export</a></div>
           <br><br>
             <table class="table table-bordered table-hover " >
                 <tr>
