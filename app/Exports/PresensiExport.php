@@ -2,15 +2,49 @@
 
 namespace App\Exports;
 use App\Models\Presensi;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use App\Models\Karyawan;
+use Maatwebsite\Excel\Concerns\FromArray;
+use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class PresensiExport implements FromCollection
+class PresensiExport implements FromArray, WithHeadings
 {
-    /**
-    * @return \Illuminate\Support\Collection
-    */
-    public function collection()
+    protected $data;
+
+    public function __construct($data)
     {
-        return Presensi::all();
+        $this->data = $data;
+    }
+    /**
+    * @return array
+    */
+    public function headings(): array
+    {
+       $headings = [];
+       foreach( $this->data->toArray()[0] as $key => $value){
+        $headings [] = Presensi::HEADINGS[$key];
+       }
+       return $headings;
+    }
+
+    /**
+    * @return array
+    */
+    public function array(): array
+    {
+        return $this->data->toArray();
+    }
+
+    public function map($row): array
+    {
+        return [
+            $row['id'],
+            $row['id_karyawan'],
+            $row['name'],
+            $row['tanggal'],
+            $row['jammasuk'],
+            $row['jampulang'],
+            $row['jamlembur'],
+            $row['jamkerja']
+        ];
     }
 }

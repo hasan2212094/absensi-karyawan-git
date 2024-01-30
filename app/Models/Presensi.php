@@ -19,6 +19,7 @@ class Presensi extends Model
         'jamlembur',
         'jamkerja'
     ];
+   
     public function karyawan()
     {
         return $this->belongsTo(Karyawan::class,'nik');
@@ -28,6 +29,20 @@ class Presensi extends Model
     {
         return $this->hasOne(Karyawan::class,'nik','id_karyawan');
     }
+    protected $hidden = [
+        'created_at',
+        'updated_at'
+    ];
+    const HEADINGS =[
+        'id' => 'NO',
+        'name'=> 'Nama',
+        'id_karyawan' => 'No ID',
+        'tanggal' => 'Tanggal',
+        'jammasuk' => 'Jam masuk',
+        'jamkeluar' => 'Jam pulang',
+        'jamlembur' => 'Jam lembur',
+        'jamkerja' => 'Total lembur'
+    ];
 
 
 

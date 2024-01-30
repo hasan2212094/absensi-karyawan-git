@@ -157,7 +157,8 @@ class PresensiController extends Controller
 
     public function presensis_exports()
     {
-        return Excel::download(new PresensiExport,'persensis.xlsx');
+        $presensis = Presensi::all();
+        return Excel::download(new PresensiExport ($presensis),'absensi.xlsx');
     }
    
 }
